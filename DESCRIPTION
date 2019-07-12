@@ -1,17 +1,19 @@
 Package: teamr
-Title: What the Package Does (One Line, Title Case)
+Title: R wrapper Library to send requests to Microsoft Teams Webhooks
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Michael",
+           family = "Yan",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "tanbingy@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0002-3845-0934"))
+Description: R wrapper Library to send requests to Microsoft Teams Webhooks
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    httr
+    httr,
+    jsonlite,
+    R6
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
