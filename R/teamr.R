@@ -105,6 +105,15 @@ connector_card <- R6Class("connector_card", list(
     self$hookurl = nurl
   },
 
+  add_section = function(sec_image, new_section){
+
+    if(!exists('sections', where=self$payload)) self$payload$sections = list()
+
+    self$payload$sections <- append(self$payload$sections, list(new_section$dump()))
+
+  },
+
+
   send = function(){
     res <- httr::POST(
       url = self$hookurl,
@@ -169,7 +178,7 @@ card_section <- R6Class("card_section", list(
       value = fvalue
       )
 
-    self$payload$facts <- append(self$payload$facts,new_fact)
+    self$payload$facts <- append(self$payload$facts,list(new_fact))
 
   },
 
@@ -195,6 +204,10 @@ card_section <- R6Class("card_section", list(
     if(!is.null(sec_title)) thisimage$title = sec_title
     self$payload$images <- append(self$payload$images,list(thisimage))
 
+  },
+
+  dump = function(){
+    return(self$payload)
   }
 
 

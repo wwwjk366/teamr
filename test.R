@@ -6,6 +6,19 @@ cc$summary("This is a summary")
 cc$add_link_button("This is the button Text", "https://github.com/wwwjk366/teamr/")
 cc$add_link_button("This is 2 the button Text", "https://github.com/wwwjk366/teamr/")
 cc$color("#008000")
+
+
+sec <- teamr::card_section$new()
+sec$text("test")
+sec$activity_sub_title("Testset")
+sec$add_fact("wtf", "ffff")
+
+cc$add_section(new_section = sec)
+
 cc$print()
+
+
 cc$send()
 
+
+library(tidyverse,quietly = TR)
