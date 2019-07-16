@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 # teamr
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/wwwjk366/teamr.svg?branch=master)](https://travis-ci.org/wwwjk366/teamr)
 <!-- badges: end -->
 
 <img src="inst/media/logo.png" align="right" width="150" height="170" />
