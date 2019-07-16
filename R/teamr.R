@@ -1,3 +1,8 @@
+
+# connector card class ----------------------------------------------------
+
+
+
 #' Create a \code{connector_card} Structure With \code{teamr}
 #'
 #' @description \code{connector_card} is at the very heart of the \code{teamr} package.
@@ -105,11 +110,19 @@ connector_card <- R6Class("connector_card", list(
     self$hookurl = nurl
   },
 
-  add_section = function(sec_image, new_section){
+  add_section = function(new_section){
 
     if(!exists('sections', where=self$payload)) self$payload$sections = list()
 
     self$payload$sections <- append(self$payload$sections, list(new_section$dump()))
+
+  },
+
+  add_potential_action = function(new_paction){
+
+    if(!exists('potentialAction', where=self$payload)) self$payload$potentialAction = list()
+
+    self$payload$potentialAction <- append(self$payload$potentialAction, list(new_paction$dump()))
 
   },
 
@@ -131,6 +144,8 @@ connector_card <- R6Class("connector_card", list(
 ))
 
 
+
+# section class -----------------------------------------------------------------
 
 card_section <- R6Class("card_section", list(
   payload = list(),
@@ -209,8 +224,48 @@ card_section <- R6Class("card_section", list(
   dump = function(){
     return(self$payload)
   }
+))
+
+
+# potential action class --------------------------------------------------
 
 
 
+potential_action <- R6Class("potential_action", list(
 
+  payload = list(),
+
+  initialize = function(type, name) {
+    self$payload$`@type` = type
+    self$payload$name  = name
+  },
+
+
+  add_actions = function(type = "HttpPOST", name = "Save", target = "http://..."){
+
+    if(!exists('actions', where=self$payload)) self$payload$actoins = list()
+    thisaction = list(
+      `@type` = type,
+      name = name,
+      target = target
+    )
+    self$payload$actions <- append(self$payload$actions, list(thisaction))
+  },
+
+
+  add_text_inputs = function(id, title, is_multi_line) {
+    if(!exists('inputs', where=self$payload)) self$payload$inputs = list()
+      thisinput = list(
+        `@type` = "TextInput",
+        id = id,
+        title = title,
+        isMultiSelect = ifelse(is_multi_line, "true", "false")
+      )
+      self$payload$inputs <- append(self$payload$inputs, list(thisinput))
+
+  },
+
+  dump = function(){
+    return(self$payload)
+  }
 ))
