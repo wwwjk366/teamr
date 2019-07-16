@@ -1,23 +1,31 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 # teamr
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 <img src="inst/media/logo.png" align="right" width="150" height="170" />
 
------
+---
 
-The goal of teamr is to provide a wrapper library to send messages to
-Microsoft Teams through connectors(incoming webhooks)
+The goal of teamr is to provide a wrapper library to send messages to Microsoft Teams through connectors(incoming webhooks)
 
 ## Installation
 
-You can install the released version of teamr from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the released version of teamr from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("teamr")
@@ -29,16 +37,15 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("wwwjk366/teamr")
 ```
-
 ## Example
 
 This is a basic example of send a simple titled message to MS Teams:
 
-``` r
+```{r example}
 library(teamr)
 
 # initiate new connector card object
-cc <- connector_card$new(hookurl = "https://outlook.office.com/...")
+cc <- connector_card$new(hookurl = "https://outlook.office.com/webhook/3df58884-d979-409c-a50a-6b13e3bfd6cb@d78aee32-8f91-4f9e-90ea-fb72965d9d7c/IncomingWebhook/a9d73932df4f4d20b3dd57ae9b4b96cb/dba232ed-dcf2-4767-a170-a56562ef8a99")
 # add text
 cc$text("This is text of main body.")
 # add title
@@ -49,21 +56,20 @@ cc$add_link_button("Read more", "https://www.google.com")
 cc$color("#008000")
 # print out the payload for checking
 cc$print()
-#> Card: 
-#>   hookurl: https://outlook.office.com/webhook/...
-#>   payload:  {"text":"This is text of main body.","title":"This is message title","potentialAction":[{"@context":"http://schema.org","@type":"ViewAction","name":"Read more","target":["https://www.google.com"]}],"themeColor":"#008000"}
 # send to Teams
 cc$send()
-#> [1] TRUE
+
 ```
+
 
 ![](inst/media/main1.PNG)
 
+
 ## Message with sections
 
-``` r
+```{r example2}
 # initiate new connector card object
-cc <- connector_card$new(hookurl = "https://outlook.office.com/...")
+cc <- connector_card$new(hookurl = "https://outlook.office.com/webhook/3df58884-d979-409c-a50a-6b13e3bfd6cb@d78aee32-8f91-4f9e-90ea-fb72965d9d7c/IncomingWebhook/a9d73932df4f4d20b3dd57ae9b4b96cb/dba232ed-dcf2-4767-a170-a56562ef8a99")
 
 # add text
 cc$text("This is text of main body.")
@@ -81,14 +87,15 @@ sec$activity_sub_title(sec_activitiy_subtitle = "LA Clippers")
 sec$activity_text(sec_activitiy_text = "Activity text")
 cc$add_section(new_section = sec)
 cc$send()
-#> [1] TRUE
+
 ```
+
 
 ![](inst/media/kawhi1.PNG)
 
 ## Message with action cards
 
-``` r
+```{r}
 # create new action card
 pa <- action_card$new(type = "ActionCard", name = "Add comment")
 # add default actions to card
@@ -117,7 +124,7 @@ pa3$add_mchoice_inputs(id = "mchoice",
 cc$add_potential_action(pa3)
 
 cc$send()
-#> [1] TRUE
+
 ```
 
 ![](inst/media/kawhi2.PNG)

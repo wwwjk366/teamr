@@ -1,13 +1,15 @@
 Package: teamr
-Title: R wrapper Library to send requests to Microsoft Teams Webhooks
-Version: 0.0.0.9000
+Title: R wrapper Library to Send Messages to Microsoft Teams Through Webhooks
+Version: 0.0.1
 Authors@R: 
     person(given = "Michael",
            family = "Yan",
            role = c("aut", "cre"),
            email = "tanbingy@gmail.com",
            comment = c(ORCID = "https://orcid.org/0000-0002-3845-0934"))
-Description: R wrapper Library to send requests to Microsoft Teams Webhooks
+URL: https://github.com/wwwjk366/teamr
+BugReports: https://github.com/wwwjk366/teamr/issues
+Description: R wrapper Library to send requests to Microsoft Teams Webhooks. 'teamr' uses R6 Class which offers message "building" type of experience.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
