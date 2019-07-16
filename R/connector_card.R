@@ -1,8 +1,3 @@
-
-# connector card class ----------------------------------------------------
-
-
-
 #' Create a \code{connector_card} Structure With \code{teamr}
 #'
 #' @description \code{connector_card} is at the very heart of the \code{teamr} package.
@@ -12,7 +7,6 @@
 #'
 #' @docType class
 #' @importFrom R6 R6Class
-#'
 #'
 #' @section Methods:
 #'
@@ -24,6 +18,7 @@
 #'   \item{\code{color(mcolor)}}{Change the default theme color.}
 #'   \item{\code{add_link_button(btext, burl)}}{Add button with links.}
 #'   \item{\code{newhook(nurl)}}{Change webhook address.}
+#'   \item{\code{print()}}{Print out the current hookurl and payload}
 #'   \item{\code{send()}}{Send \code{connector_card} to specified Microsoft Teams incomeing webhook URL.}
 #' }
 #'
@@ -46,8 +41,7 @@
 #' #' cc$text("Of on affixed civilly moments promise explain")
 #' cc$title("This is a title")
 #' cc$summary("This is a summary")
-#' cc$add_link_button("This is the button Text", "https://github.com/rveachkc/pymsteams/")
-#' cc$add_link_button("This is 2 the button Text", "https://github.com/rveachkc/pymsteams/")
+#' cc$add_link_button("This is the button Text", "https://github.com/wwwjk366/teamr")
 #' cc$color("#008000")
 #' cc$print()
 #' cc$send()
@@ -141,131 +135,4 @@ connector_card <- R6Class("connector_card", list(
     else return(res)
 
     }
-))
-
-
-
-# section class -----------------------------------------------------------------
-
-card_section <- R6Class("card_section", list(
-  payload = list(),
-
-  initialize = function() {
-  },
-
-  print = function(...) {
-    cat("Section: \n")
-    cat("  payload:  ", jsonlite::toJSON(self$payload,auto_unbox = TRUE),  "\n", sep = "")
-    invisible(self)
-  },
-
-  title = function(sec_title){
-    self$payload$title <- sec_title
-  },
-
-  text = function(sec_text){
-    self$payload$text <- sec_text
-  },
-
-  activity_title = function(sec_activity_title){
-    self$payload$activityTitle <- sec_activity_title
-  },
-
-  activity_sub_title = function(sec_activitiy_subtitle){
-    self$payload$activitySubtitle <- sec_activitiy_subtitle
-  },
-
-  activity_image = function(sec_activitiy_image){
-    self$payload$activityImage <- sec_activitiy_image
-  },
-
-  activity_text = function(sec_activitiy_text){
-    self$payload$activityText <- sec_activitiy_text
-  },
-
-
-  add_fact = function(fname, fvalue){
-
-    if(!exists('facts', where=self$payload)) self$payload$facts = list()
-
-    new_fact = list(
-      name = fname,
-      value = fvalue
-      )
-
-    self$payload$facts <- append(self$payload$facts,list(new_fact))
-
-  },
-
-  add_link_button = function(btext, burl){
-
-    if(!exists('potentialAction', where=self$payload)) self$payload$potentialAction = list()
-    thisbutton = list(
-      `@context` = "http://schema.org",
-      `@type` = "ViewAction",
-      name = btext,
-      target = list(burl)
-    )
-    self$payload$potentialAction <- append(self$payload$potentialAction,list(thisbutton))
-  },
-
-  add_image = function(sec_image, sec_title = NULL){
-
-    if(!exists('images', where=self$payload)) self$payload$images = list()
-
-    thisimage = list(
-      image = sec_image
-    )
-    if(!is.null(sec_title)) thisimage$title = sec_title
-    self$payload$images <- append(self$payload$images,list(thisimage))
-
-  },
-
-  dump = function(){
-    return(self$payload)
-  }
-))
-
-
-# potential action class --------------------------------------------------
-
-
-
-potential_action <- R6Class("potential_action", list(
-
-  payload = list(),
-
-  initialize = function(type, name) {
-    self$payload$`@type` = type
-    self$payload$name  = name
-  },
-
-
-  add_actions = function(type = "HttpPOST", name = "Save", target = "http://..."){
-
-    if(!exists('actions', where=self$payload)) self$payload$actoins = list()
-    thisaction = list(
-      `@type` = type,
-      name = name,
-      target = target
-    )
-    self$payload$actions <- append(self$payload$actions, list(thisaction))
-  },
-
-
-  add_text_inputs = function(id, title, is_multi_line) {
-    if(!exists('inputs', where=self$payload)) self$payload$inputs = list()
-      thisinput = list(
-        `@type` = "TextInput",
-        id = id,
-        title = title,
-        isMultiSelect = ifelse(is_multi_line, "true", "false")
-      )
-      self$payload$inputs <- append(self$payload$inputs, list(thisinput))
-
-  },
-
-  dump = function(){
-    return(self$payload)
-  }
 ))
