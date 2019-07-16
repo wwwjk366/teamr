@@ -1,5 +1,5 @@
 Package: teamr
-Title: R wrapper Library to Send Messages to Microsoft Teams Through Webhooks
+Title: R Wrapper Library to Send Messages to Microsoft Teams Through Webhooks
 Version: 0.0.1
 Authors@R: 
     person(given = "Michael",

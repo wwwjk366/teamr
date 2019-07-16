@@ -20,9 +20,9 @@ structure and use the methods to append, modify or send your card to the webhook
 
 \describe{
 \item{\code{action_card$new(type, name)}}{Creates a new \code{action_card}.}
-\item{\code{add_text_inputs(id, title, is_multiline)}}{Add \code{TextInput} to your \code{action_card} reponses }
-\item{\code{add_date_inputs(id, title)}}{Add \code{DateInput} to your \code{action_card} reponses }
-\item{\code{add_mchoice_inputs(id, title, is_multi_select)}}{Add \code{MultichoiceInput} to your \code{action_card} reponses }
+\item{\code{add_text_inputs(id, title, is_multiline)}}{Add \code{TextInput} to your \code{action_card}.}
+\item{\code{add_date_inputs(id, title)}}{Add \code{DateInput} to your \code{action_card}.}
+\item{\code{add_mchoice_inputs(id, title, is_multi_select)}}{Add \code{MultichoiceInput} to your \code{action_card}.}
 \item{\code{dump()}}{Dump current payload}
 }
 }
