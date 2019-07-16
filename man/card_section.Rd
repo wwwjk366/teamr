@@ -48,12 +48,18 @@ library(teamr)
 
 cc <- connector_card$new(hookurl = "https://outlook.office.com/webhook/...")
 cc$text("Of on affixed civilly moments promise explain")
-pa <- action_card$new(type = "ActionCard", name = "Add comment")
-pa$add_actions()
-pa$add_text_inputs(id = "comment", title = "Add comment for this task", is_multi_line = TRUE)
-cc$add_potential_action(pa)
+sec$text("2018-19 Finals MVP")
+sec$activity_sub_title("Kawhi Leonard")
+sec$add_fact("Position", "Forward")
+sec$title("Player Info")
+sec$add_image(sec_image = "https://....jpg", sec_title = "so funny")
+sec$activity_image("https://.....jpg")
+sec$activity_title("Activity Title")
+sec$activity_sub_title("Activity Subtitle")
+sec$activity_text("Activity text")
+cc$add_section(new_section = sec)
+cc$print()
 cc$send()
 }
-
 }
 \keyword{datasets}

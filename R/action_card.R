@@ -1,6 +1,6 @@
 #' Create a \code{action_card} Structure With \code{teamr}
 #'
-#' @description \code{action_card} creates an \code{potentialAction} object which can be added to \code{connector_card}.
+#' @description \code{action_card} creates a \code{potentialAction} object which can be added to \code{connector_card}.
 #'
 #' @details Assemble \code{action_card} objects into a \code{action_card}
 #' structure and use the methods to append, modify or send your card to the webhook specified.
@@ -32,17 +32,10 @@
 #'
 #' cc <- connector_card$new(hookurl = "https://outlook.office.com/webhook/...")
 #' cc$text("Of on affixed civilly moments promise explain")
-#' sec$text("2018-19 Finals MVP")
-#' sec$activity_sub_title("Kawhi Leonard")
-#' sec$add_fact("Position", "Forward")
-#' sec$title("Player Info")
-#' sec$add_image(sec_image = "https://....jpg", sec_title = "so funny")
-#' sec$activity_image("https://.....jpg")
-#' sec$activity_title("Activity Title")
-#' sec$activity_sub_title("Activity Subtitle")
-#' sec$activity_text("Activity text")
-#' cc$add_section(new_section = sec)
-#' cc$print()
+#' pa <- action_card$new(type = "ActionCard", name = "Add comment")
+#' pa$add_actions()
+#' pa$add_text_inputs(id = "comment", title = "Add comment for this task", is_multi_line = TRUE)
+#' cc$add_potential_action(pa)
 #' cc$send()
 #' }
 #'
