@@ -4,7 +4,7 @@
 # teamr
 
 <!-- badges: start -->
-
+[![Build Status](https://travis-ci.com/wwwjk366/teamr.svg?branch=master)](https://travis-ci.com/wwwjk366/teamr)
 <!-- badges: end -->
 
 <img src="inst/media/logo.png" align="right" width="150" height="170" />
