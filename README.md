@@ -6,6 +6,8 @@
 <!-- badges: start -->
 [![Build Status](https://travis-ci.com/wwwjk366/teamr.svg?branch=master)](https://travis-ci.com/wwwjk366/teamr)
 [![CRAN status](https://www.r-pkg.org/badges/version/teamr)](https://cran.r-project.org/package=teamr)
+[![CRAN Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/teamr)](https://cran.r-project.org/package=teamr)
+[![CRAN Monthly Downloads](https://cranlogs.r-pkg.org/badges/teamr)](https://cran.r-project.org/package=teamr)
 <!-- badges: end -->
 
 <img src="inst/media/logo.png" align="right" width="150" height="170" />
